@@ -14,6 +14,8 @@ struct MainView: View {
     @State private var number = 0
     @State private var gameIsRunning = true
 
+    @ObservedObject var chronometer = Chronometer()
+
     var score: Int {
         var total = 0
 
@@ -33,14 +35,21 @@ struct MainView: View {
                     .offset(x: 0, y: CGFloat(index) * 100 - CGFloat(self.number) * 100)
             }
 
+
             if gameIsRunning {
+                // challenge 2
+                TimerView(chronometer: chronometer)
+
                 ScoreView(score: score)
             }
             else {
-                RestartView(score: score) {
+                // challenge 1
+                RestartView(score: score, time: chronometer.currentTime) {
                     self.number = 0
                     self.questions = []
                     self.createQuestions()
+                    self.chronometer.reset()
+                    self.chronometer.start()
                     self.gameIsRunning = true
                 }
             }
@@ -49,6 +58,8 @@ struct MainView: View {
         .background(LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
         .onAppear {
             self.createQuestions()
+            // challenge 2
+            self.chronometer.start()
         }
         .onReceive(NotificationCenter.default.publisher(for: .enterNumber)) { note in
             self.enterNumber(note: note)
@@ -77,6 +88,8 @@ struct MainView: View {
         // challenge 1
         if self.number >= self.questions.count - 1 {
             self.gameIsRunning = false
+            // challenge 2
+            self.chronometer.stop()
         }
         guard self.number < self.questions.count else { return }
 
@@ -88,7 +101,7 @@ struct MainView: View {
     }
 
     func createQuestions() {
-        for _ in 1...5 {
+        for _ in 1...50 {
             questions.append(Question())
         }
     }

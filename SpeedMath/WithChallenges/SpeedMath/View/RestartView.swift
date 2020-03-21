@@ -11,6 +11,8 @@ import SwiftUI
 // challenge 1
 struct RestartView: View {
     let score: Int
+    // challenge 2
+    let time: TimeInterval
     let action: () -> ()
 
     var body: some View {
@@ -20,6 +22,11 @@ struct RestartView: View {
             Text("Score: \(score)")
                 .modifier(ScoreTextStyle())
 
+            // challenge 2
+            Text("Time: \(time.formatted)")
+                .modifier(TimerTextStyle())
+                .padding()
+            
             Button("Restart") {
                 self.action()
             }
@@ -31,6 +38,6 @@ struct RestartView: View {
 
 struct Restart_Previews: PreviewProvider {
     static var previews: some View {
-        RestartView(score: 0, action: {})
+        RestartView(score: 0, time: 10.0, action: {})
     }
 }
