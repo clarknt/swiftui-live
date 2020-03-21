@@ -14,9 +14,9 @@
 		9539DC44242506AB00C70400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9539DC43242506AB00C70400 /* Assets.xcassets */; };
 		9539DC47242506AB00C70400 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9539DC46242506AB00C70400 /* Preview Assets.xcassets */; };
 		9539DC4A242506AB00C70400 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9539DC48242506AB00C70400 /* Main.storyboard */; };
-		9539DC5324250C6F00C70400 /* TypingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539DC5224250C6F00C70400 /* TypingWindow.swift */; };
 		954BC4E024259F8100CF04F2 /* Chronometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954BC4DF24259F8100CF04F2 /* Chronometer.swift */; };
 		954BC4E22425A22B00CF04F2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954BC4E12425A22B00CF04F2 /* TimerView.swift */; };
+		95C1123F2426AF9300B052C2 /* TypingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C1123E2426AF9300B052C2 /* TypingWindow.swift */; };
 		95FB55C82425547B00394FCE /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB55C72425547B00394FCE /* Question.swift */; };
 		95FB55CB242554B200394FCE /* QuestionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB55CA242554B200394FCE /* QuestionRow.swift */; };
 		95FB55CD2425555300394FCE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB55CC2425555300394FCE /* Styles.swift */; };
@@ -33,9 +33,9 @@
 		9539DC49242506AB00C70400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9539DC4B242506AB00C70400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9539DC4C242506AB00C70400 /* SpeedMath.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeedMath.entitlements; sourceTree = "<group>"; };
-		9539DC5224250C6F00C70400 /* TypingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TypingWindow.swift; path = ../../Utils/TypingWindow.swift; sourceTree = "<group>"; };
 		954BC4DF24259F8100CF04F2 /* Chronometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chronometer.swift; sourceTree = "<group>"; };
 		954BC4E12425A22B00CF04F2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		95C1123E2426AF9300B052C2 /* TypingWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingWindow.swift; sourceTree = "<group>"; };
 		95FB55C72425547B00394FCE /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		95FB55CA242554B200394FCE /* QuestionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRow.swift; sourceTree = "<group>"; };
 		95FB55CC2425555300394FCE /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				95FB55CC2425555300394FCE /* Styles.swift */,
-				9539DC5224250C6F00C70400 /* TypingWindow.swift */,
+				95C1123E2426AF9300B052C2 /* TypingWindow.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -194,10 +194,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				954BC4E22425A22B00CF04F2 /* TimerView.swift in Sources */,
-				9539DC5324250C6F00C70400 /* TypingWindow.swift in Sources */,
 				954BC4E024259F8100CF04F2 /* Chronometer.swift in Sources */,
 				95FB55CB242554B200394FCE /* QuestionRow.swift in Sources */,
 				95FB55C82425547B00394FCE /* Question.swift in Sources */,
+				95C1123F2426AF9300B052C2 /* TypingWindow.swift in Sources */,
 				950F2D682425587F00B32151 /* ScoreView.swift in Sources */,
 				95FB55CD2425555300394FCE /* Styles.swift in Sources */,
 				950F2D6A2425590400B32151 /* RestartView.swift in Sources */,
