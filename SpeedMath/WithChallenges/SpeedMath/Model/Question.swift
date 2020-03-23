@@ -14,19 +14,43 @@ struct Question {
     var userAnswer = ""
     var paddingAmount = 0
 
-    init() {
-        let left = Int.random(in: 1...10)
-        let right = Int.random(in: 1...10)
+    // challenge 3
+    init(settings: Settings) {
+        var left: Int
+        var right: Int
+        var result: Int
 
-        text = "\(left) + \(right) = "
-        actualAnswer = "\(left + right)"
+        let currentOperation = settings.operations.randomElement() ?? .addition
 
-        if left < 10 {
-            paddingAmount += 1
+        // avoid negative results
+        repeat {
+            left = Int.random(in: 1...settings.maxNumber)
+            right = Int.random(in: 1...settings.maxNumber)
+            result = Self.performOperation(operation: currentOperation, left: left, right: right)
         }
+        while result < 0
 
-        if right < 10 {
-            paddingAmount += 1
+        text = "\(left) \(currentOperation.stringOperator()) \(right) = "
+        actualAnswer = "\(result)"
+
+        if left < 10 { paddingAmount += 1 }
+        if settings.maxNumber >= 100 && left < 100 { paddingAmount += 1 }
+        if settings.maxNumber >= 1000 && left < 1000 { paddingAmount += 1 }
+
+        if right < 10 { paddingAmount += 1 }
+        if settings.maxNumber >= 100 && right < 100 { paddingAmount += 1 }
+        if settings.maxNumber >= 1000 && right < 1000 { paddingAmount += 1 }
+    }
+
+    // challenge 3
+    static func performOperation(operation: Operation, left: Int, right: Int) -> Int {
+        switch operation {
+        case .addition:
+            return left + right
+        case .multiplication:
+            return left * right
+        case .substraction:
+            return left - right
         }
     }
 }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		950F2D682425587F00B32151 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F2D672425587F00B32151 /* ScoreView.swift */; };
 		950F2D6A2425590400B32151 /* RestartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F2D692425590400B32151 /* RestartView.swift */; };
+		9536854D242916310070B92F /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536854C242916310070B92F /* SettingsButton.swift */; };
+		9536854F242917F80070B92F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536854E242917F80070B92F /* SettingsView.swift */; };
+		9536855124292D460070B92F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536855024292D460070B92F /* Settings.swift */; };
 		9539DC40242506A900C70400 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539DC3F242506A900C70400 /* AppDelegate.swift */; };
 		9539DC42242506A900C70400 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539DC41242506A900C70400 /* MainView.swift */; };
 		9539DC44242506AB00C70400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9539DC43242506AB00C70400 /* Assets.xcassets */; };
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		950F2D672425587F00B32151 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		950F2D692425590400B32151 /* RestartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartView.swift; sourceTree = "<group>"; };
+		9536854C242916310070B92F /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		9536854E242917F80070B92F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9536855024292D460070B92F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9539DC3C242506A900C70400 /* SpeedMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9539DC3F242506A900C70400 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9539DC41242506A900C70400 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -103,8 +109,9 @@
 		95FB55C62425547100394FCE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				95FB55C72425547B00394FCE /* Question.swift */,
 				954BC4DF24259F8100CF04F2 /* Chronometer.swift */,
+				95FB55C72425547B00394FCE /* Question.swift */,
+				9536855024292D460070B92F /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,6 +124,8 @@
 				95FB55CA242554B200394FCE /* QuestionRow.swift */,
 				950F2D692425590400B32151 /* RestartView.swift */,
 				950F2D672425587F00B32151 /* ScoreView.swift */,
+				9536854C242916310070B92F /* SettingsButton.swift */,
+				9536854E242917F80070B92F /* SettingsView.swift */,
 				954BC4E12425A22B00CF04F2 /* TimerView.swift */,
 			);
 			path = View;
@@ -195,6 +204,7 @@
 			files = (
 				954BC4E22425A22B00CF04F2 /* TimerView.swift in Sources */,
 				954BC4E024259F8100CF04F2 /* Chronometer.swift in Sources */,
+				9536855124292D460070B92F /* Settings.swift in Sources */,
 				95FB55CB242554B200394FCE /* QuestionRow.swift in Sources */,
 				95FB55C82425547B00394FCE /* Question.swift in Sources */,
 				95C1123F2426AF9300B052C2 /* TypingWindow.swift in Sources */,
@@ -202,6 +212,8 @@
 				95FB55CD2425555300394FCE /* Styles.swift in Sources */,
 				950F2D6A2425590400B32151 /* RestartView.swift in Sources */,
 				9539DC42242506A900C70400 /* MainView.swift in Sources */,
+				9536854F242917F80070B92F /* SettingsView.swift in Sources */,
+				9536854D242916310070B92F /* SettingsButton.swift in Sources */,
 				9539DC40242506A900C70400 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

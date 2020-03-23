@@ -47,7 +47,8 @@ struct QuestionRow: View {
             ZStack {
                 Text(" ")
                 .padding()
-                .frame(width: 150)
+                // challenge 3
+                .frame(width: 250)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .fill(positionColor)
@@ -64,9 +65,9 @@ struct QuestionRow: View {
 struct QuestionRow_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            QuestionRow(question: Question(), position: .answered)
-            QuestionRow(question: Question(), position: .current)
-            QuestionRow(question: Question(), position: .upcoming)
+            QuestionRow(question: Question(settings: Settings()), position: .answered)
+            QuestionRow(question: Question(settings: Settings()), position: .current)
+            QuestionRow(question: Question(settings: Settings()), position: .upcoming)
         }
     }
 }

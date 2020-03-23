@@ -11,6 +11,8 @@ import SwiftUI
 // challenge 1
 struct RestartView: View {
     let score: Int
+    let questions: Int
+
     // challenge 2
     let time: TimeInterval
     let action: () -> ()
@@ -19,7 +21,7 @@ struct RestartView: View {
         VStack {
             Spacer()
 
-            Text("Score: \(score)")
+            Text("Score: \(score) / \(questions)")
                 .modifier(ScoreTextStyle())
 
             // challenge 2
@@ -38,6 +40,6 @@ struct RestartView: View {
 
 struct Restart_Previews: PreviewProvider {
     static var previews: some View {
-        RestartView(score: 0, time: 10.0, action: {})
+        RestartView(score: 0, questions: 50, time: 10.0, action: {})
     }
 }

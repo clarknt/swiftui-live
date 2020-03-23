@@ -14,7 +14,13 @@ struct MainView: View {
     @State private var number = 0
     @State private var gameIsRunning = true
 
+    // challenge 3
+    @State private var showSettings = false
+
     @ObservedObject var chronometer = Chronometer()
+
+    // challenge 3
+    @EnvironmentObject var settings: Settings
 
     var score: Int {
         var total = 0
@@ -43,19 +49,27 @@ struct MainView: View {
                 ScoreView(score: score)
             }
             else {
-                // challenge 1
-                RestartView(score: score, time: chronometer.currentTime) {
-                    self.number = 0
-                    self.questions = []
-                    self.createQuestions()
-                    self.chronometer.reset()
-                    self.chronometer.start()
-                    self.gameIsRunning = true
+                // challenge 1 & 3
+                RestartView(score: score, questions: settings.maxQuestion, time: chronometer.currentTime) {
+                    self.restartGame()
                 }
+            }
+
+            // challenge 3
+            SettingsButton {
+                self.chronometer.stop()
+                self.showSettings = true
             }
         }
         .frame(width: 1000, height: 600)
         .background(LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
+        // challenge 3
+        .sheet(isPresented: $showSettings) {
+            SettingsView() {
+                self.restartGame()
+            }
+            .environmentObject(self.settings)
+        }
         .onAppear {
             self.createQuestions()
             // challenge 2
@@ -78,8 +92,9 @@ struct MainView: View {
 
         guard let number = note.object as? Int else { return }
 
-        // cap at 3 digits
-        if self.questions[self.number].userAnswer.count < 3 {
+        // challenge 3
+        // cap at 7 digits for 1000 * 1000
+        if self.questions[self.number].userAnswer.count < 7 {
             self.questions[self.number].userAnswer += String(number)
         }
     }
@@ -101,8 +116,9 @@ struct MainView: View {
     }
 
     func createQuestions() {
-        for _ in 1...50 {
-            questions.append(Question())
+        for _ in 1...settings.maxQuestion {
+            // challenge 3
+            questions.append(Question(settings: settings))
         }
     }
 
@@ -117,10 +133,19 @@ struct MainView: View {
             return .upcoming
         }
     }
+
+    func restartGame() {
+        self.number = 0
+        self.questions = []
+        self.createQuestions()
+        self.chronometer.reset()
+        self.chronometer.start()
+        self.gameIsRunning = true
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView().environmentObject(Settings())
     }
 }
