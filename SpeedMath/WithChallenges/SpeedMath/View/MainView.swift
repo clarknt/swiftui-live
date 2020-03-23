@@ -50,7 +50,7 @@ struct MainView: View {
             }
             else {
                 // challenge 1 & 3
-                RestartView(score: score, questions: settings.maxQuestion, time: chronometer.currentTime) {
+                RestartView(score: score, questions: questions.count, time: chronometer.currentTime) {
                     self.restartGame()
                 }
             }
