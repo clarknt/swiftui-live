@@ -6,3 +6,4 @@ Source code for SwiftUI Live - Building an app from scratch by Paul Hudson
 *Follow links for screenshots*
 
 - [SpeedMath](./SpeedMath)
+- [Pairs](./Pairs)
