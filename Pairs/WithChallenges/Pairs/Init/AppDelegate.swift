@@ -18,13 +18,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
 
-        // challenge 2
-        let settings = Settings()
+        // challenge 1 & 2
+        let deck = Deck()
 
         let contentView = MainView()
             .edgesIgnoringSafeArea(.all)
-            // challenge 2
-            .environmentObject(settings)
+            // challenge 1 & 2
+            .environmentObject(deck)
 
         // Create the window and set the content view. 
         window = NSWindow(

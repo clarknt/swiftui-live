@@ -26,7 +26,6 @@
 		959164AD2447BE1B00A218DF /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959164AC2447BE1B00A218DF /* SettingsButton.swift */; };
 		959164B02447BE7700A218DF /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959164AF2447BE7700A218DF /* Styles.swift */; };
 		959164B22447BF4500A218DF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959164B12447BF4500A218DF /* SettingsView.swift */; };
-		959164B42447BF7100A218DF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959164B32447BF7100A218DF /* Settings.swift */; };
 		959164B82447C79900A218DF /* cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 959164B72447C79900A218DF /* cars.json */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +52,6 @@
 		959164AC2447BE1B00A218DF /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		959164AF2447BE7700A218DF /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		959164B12447BF4500A218DF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		959164B32447BF7100A218DF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		959164B72447C79900A218DF /* cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cars.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +147,6 @@
 				959164A62447BDA600A218DF /* Card.swift */,
 				959164A82447BDCD00A218DF /* CardState.swift */,
 				959164AA2447BDDA00A218DF /* CartPart.swift */,
-				959164B32447BF7100A218DF /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,7 +250,6 @@
 				9537023B24475B6200A7314F /* AppDelegate.swift in Sources */,
 				959164B22447BF4500A218DF /* SettingsView.swift in Sources */,
 				9591649C2447BBDE00A218DF /* CardView.swift in Sources */,
-				959164B42447BF7100A218DF /* Settings.swift in Sources */,
 				9591649E2447BC3600A218DF /* CardBack.swift in Sources */,
 				959164A22447BCA500A218DF /* GridStack.swift in Sources */,
 				9591649A2447BBBE00A218DF /* Deck.swift in Sources */,

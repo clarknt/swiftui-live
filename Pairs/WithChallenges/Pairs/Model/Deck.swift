@@ -12,8 +12,34 @@ class Deck: ObservableObject {
     var allCards = [Card]()
     var cardParts = [CardPart]()
 
+    // challenge 2
+    let decks = ["capitals", "math", "cars"]
+    var deck = "capitals" {
+        didSet {
+            reloadData()
+        }
+    }
+
+    // challenge 1
+    let difficulties = ["4x3", "6x4", "7x6"]
+    var difficulty = "6x4" {
+       didSet {
+           reloadData()
+       }
+   }
+
+    // challenge 1
+    var cardRows: Int {
+        Int(String(difficulty.suffix(1)))!
+    }
+
+    // challenge 1
+    var cardColumns: Int {
+        Int(String(difficulty.prefix(1)))!
+    }
+
     init() {
-        reloadData(settings: Settings())
+        reloadData()
     }
 
     func set(_ index: Int, to state: CardState) {
@@ -23,12 +49,12 @@ class Deck: ObservableObject {
         objectWillChange.send()
     }
 
-    // challenge 2
-    func reloadData(settings: Settings) {
-        allCards = Bundle.main.decode("\(settings.deck).json")
+    // challenge 1 & 2
+    func reloadData() {
+        allCards = Bundle.main.decode("\(deck).json")
 
-        // pick 12 random cards
-        let selectedCards = allCards.shuffled().prefix(12)
+        // challenge 1 - pick random cards
+        let selectedCards = allCards.shuffled().prefix(cardRows * cardColumns / 2)
 
         cardParts.removeAll(keepingCapacity: true)
         for card in selectedCards {

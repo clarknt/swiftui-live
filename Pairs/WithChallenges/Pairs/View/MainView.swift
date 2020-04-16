@@ -14,10 +14,8 @@ enum GameState {
 }
 
 struct MainView: View {
-    // challenge 2
-    @EnvironmentObject var settings: Settings
-
-    @ObservedObject var deck = Deck()
+    // challenge 1 & 2
+    @EnvironmentObject var deck: Deck
 
     @State private var state = GameState.start
     @State private var firstIndex: Int?
@@ -26,11 +24,29 @@ struct MainView: View {
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
-    // challenge 2
+    // challenge 1 & 2
     @State private var showSettings = false
 
-    let rowCount = 4
-    let columnCount = 6
+    // challenge 1 & 2
+    private var cardWidth: CGFloat {
+        let fullWidth = 910
+        let padding = 10
+        let totalPadding = (deck.cardColumns + 1) * padding
+        let totalWidth = fullWidth - totalPadding
+
+        return CGFloat(totalWidth / deck.cardColumns)
+    }
+
+    // challenge 1 & 2
+    private var cardHeight: CGFloat {
+        let fullHeight = 450
+        let padding = 10
+        let totalPadding = (deck.cardRows + 1) * padding
+        let totalHeight = fullHeight - totalPadding
+
+        return CGFloat(totalHeight / deck.cardRows)
+    }
+
 
     var body: some View {
         ZStack {
@@ -39,33 +55,35 @@ struct MainView: View {
             VStack {
                 Image(decorative: "pairs")
 
-                GridStack(rows: rowCount, columns: columnCount, content: card)
+                // challenge 1
+                GridStack(rows: deck.cardRows, columns: deck.cardColumns, content: card)
+                    .layoutPriority(1)
 
                 Text("Time: \(timeRemaining)")
                     .font(.largeTitle)
             }
             .padding()
 
-            // challenge 2
+            // challenge 1 & 2
             SettingsButton {
                 self.showSettings = true
             }
         }
         .onReceive(timer, perform: updateTimer)
-        // challenge 2
+        // challenge 1 & 2
         .sheet(isPresented: $showSettings) {
             SettingsView() {
                 self.restartGame()
             }
-            .environmentObject(self.settings)
+            .environmentObject(self.deck)
         }
     }
 
     func card(atRow row: Int, column: Int) -> some View {
-        let index = (row * columnCount) + column
+        let index = (row * deck.cardColumns) + column
         let part = deck.cardParts[index]
 
-        return CardView(cardPart: part)
+        return CardView(width: cardWidth, height: cardHeight, cardPart: part)
             .accessibility(addTraits: .isButton)
             .accessibility(label: Text(part.text))
             .onTapGesture {
@@ -139,7 +157,7 @@ struct MainView: View {
     }
 
     func updateTimer(_ currentTime: Date) {
-        // challenge 2
+        // challenge 1 & 2
         guard showSettings == false else { return }
 
         let unmatched = self.deck.cardParts.filter { $0.state != .matched }
@@ -150,10 +168,8 @@ struct MainView: View {
         }
     }
 
-    // challenge 2
+    // challenge 1 & 2
     func restartGame() {
-        deck.reloadData(settings: settings)
-
         timeRemaining = 100
     }
 }
@@ -161,6 +177,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView().environmentObject(Deck())
     }
 }

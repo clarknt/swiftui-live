@@ -14,9 +14,9 @@ struct GridStack<Content: View>: View {
     let content: (Int, Int) -> Content
 
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             ForEach(0..<rows, id: \.self) { row in
-                HStack {
+                HStack(spacing: 10) {
                     ForEach(0..<self.columns, id: \.self) { column in
                         self.content(row, column)
                     }
@@ -28,7 +28,9 @@ struct GridStack<Content: View>: View {
 
 struct GridStack_Previews: PreviewProvider {
     static var previews: some View {
-        GridStack(rows: 3, columns: 4, content: { row, column in Text("\(row), \(column)")
+        GridStack(rows: 3, columns: 4, content: { row, column in
+            Text("\(row), \(column)")
+                .frame(width: 50, height: 30)
                 .padding()
         })
     }

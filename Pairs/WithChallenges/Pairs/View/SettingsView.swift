@@ -11,11 +11,9 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @EnvironmentObject var settings: Settings
+    @EnvironmentObject var deck: Deck
 
     let applyAction: () -> ()
-
-    @State var selectedOperations = [true, false, false]
 
     init(applyAction: @escaping () -> ()) {
         self.applyAction = applyAction
@@ -23,8 +21,14 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            Picker(selection: $settings.deck, label: Text("Theme")) {
-                ForEach(settings.decks, id: \.self) { pair in
+            Picker(selection: $deck.difficulty, label: Text("Difficulty")) {
+                ForEach(deck.difficulties, id: \.self) { difficulty in
+                    Text("\(difficulty)").tag(difficulty)
+                }
+            }
+
+            Picker(selection: $deck.deck, label: Text("Theme")) {
+                ForEach(deck.decks, id: \.self) { pair in
                     Text("\(pair)").tag(pair)
                 }
             }
@@ -32,7 +36,7 @@ struct SettingsView: View {
             HStack {
                 Spacer()
 
-                Button("Apply and Restart") {
+                Button("Restart game") {
                     self.presentationMode.wrappedValue.dismiss()
                     self.applyAction()
                 }
@@ -47,6 +51,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(applyAction: { }).environmentObject(Settings())
+        SettingsView(applyAction: { }).environmentObject(Deck())
     }
 }

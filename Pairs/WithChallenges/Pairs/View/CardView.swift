@@ -9,15 +9,19 @@
 import SwiftUI
 
 struct CardView: View {
+    // challenge 1
+    let width: CGFloat
+    let height: CGFloat
+
     var cardPart: CardPart
 
     var body: some View {
         ZStack {
-            CardBack()
+            CardBack(width: width, height: height)
                 .rotation3DEffect(.degrees(cardPart.state == .unflipped ? 0 : 180), axis: (x: 0, y: 1, z: 0))
                 .opacity(cardPart.state == .unflipped ? 1 : 0)
 
-            CardFront(cardPart: cardPart)
+            CardFront(width: width, height: height, cardPart: cardPart)
                 .rotation3DEffect(.degrees(cardPart.state != .unflipped ? 0 : -180), axis: (x: 0, y: 1, z: 0))
                 // if doing 0 instead of -1, the number is visible to soon
                 // with -1 it starts being visible halfway through the rotation
@@ -28,6 +32,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(cardPart: CardPart(id: UUID(), text: "Hello"))
+        CardView(width: 140, height: 100, cardPart: CardPart(id: UUID(), text: "Hello"))
     }
 }

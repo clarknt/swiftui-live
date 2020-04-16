@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-// challenge 2
+// challenge 1 & 2
 
 struct SettingsButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {

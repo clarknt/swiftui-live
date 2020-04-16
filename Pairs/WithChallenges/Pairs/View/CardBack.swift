@@ -9,10 +9,14 @@
 import SwiftUI
 
 struct CardBack: View {
+    // challenge 1
+    let width: CGFloat
+    let height: CGFloat
+
     var body: some View {
         RoundedRectangle(cornerRadius: 16)
             .fill(Color.blue)
-            .frame(width: 140, height: 100)
+            .frame(width: width, height: height)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .strokeBorder(Color.white, lineWidth: 2)
@@ -22,6 +26,6 @@ struct CardBack: View {
 
 struct CardBack_Previews: PreviewProvider {
     static var previews: some View {
-        CardBack()
+        CardBack(width: 140, height: 100)
     }
 }

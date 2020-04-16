@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-// challenge 2
+// challenge 1 & 2
 
 struct SettingsButton: View {
     let action: () -> ()
