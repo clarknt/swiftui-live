@@ -14,6 +14,10 @@
 		9537024524475B6500A7314F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9537024324475B6500A7314F /* Main.storyboard */; };
 		9537024F24475DB800A7314F /* capitals.json in Resources */ = {isa = PBXBuildFile; fileRef = 9537024D24475DB800A7314F /* capitals.json */; };
 		9537025024475DB800A7314F /* math.json in Resources */ = {isa = PBXBuildFile; fileRef = 9537024E24475DB800A7314F /* math.json */; };
+		953BCA5D2448ECD400899472 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCA5C2448ECD400899472 /* Score.swift */; };
+		953BCA5F2448ED8C00899472 /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCA5E2448ED8C00899472 /* Scores.swift */; };
+		953BCA612448F1E300899472 /* ScoreKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCA602448F1E300899472 /* ScoreKey.swift */; };
+		953BCA632448F56000899472 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCA622448F56000899472 /* HighScoresView.swift */; };
 		9591649A2447BBBE00A218DF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959164992447BBBE00A218DF /* Deck.swift */; };
 		9591649C2447BBDE00A218DF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591649B2447BBDE00A218DF /* CardView.swift */; };
 		9591649E2447BC3600A218DF /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591649D2447BC3600A218DF /* CardBack.swift */; };
@@ -40,6 +44,10 @@
 		9537024724475B6500A7314F /* Pairs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pairs.entitlements; sourceTree = "<group>"; };
 		9537024D24475DB800A7314F /* capitals.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capitals.json; sourceTree = "<group>"; };
 		9537024E24475DB800A7314F /* math.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = math.json; sourceTree = "<group>"; };
+		953BCA5C2448ECD400899472 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		953BCA5E2448ED8C00899472 /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
+		953BCA602448F1E300899472 /* ScoreKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreKey.swift; sourceTree = "<group>"; };
+		953BCA622448F56000899472 /* HighScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
 		959164992447BBBE00A218DF /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		9591649B2447BBDE00A218DF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9591649D2447BC3600A218DF /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
@@ -114,6 +122,7 @@
 				9591649F2447BC5300A218DF /* CardFront.swift */,
 				9591649B2447BBDE00A218DF /* CardView.swift */,
 				959164A12447BCA500A218DF /* GridStack.swift */,
+				953BCA622448F56000899472 /* HighScoresView.swift */,
 				9537023C24475B6200A7314F /* MainView.swift */,
 				959164AC2447BE1B00A218DF /* SettingsButton.swift */,
 				959164B12447BF4500A218DF /* SettingsView.swift */,
@@ -143,10 +152,13 @@
 		959164982447BBAD00A218DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				959164992447BBBE00A218DF /* Deck.swift */,
 				959164A62447BDA600A218DF /* Card.swift */,
 				959164A82447BDCD00A218DF /* CardState.swift */,
 				959164AA2447BDDA00A218DF /* CartPart.swift */,
+				959164992447BBBE00A218DF /* Deck.swift */,
+				953BCA5C2448ECD400899472 /* Score.swift */,
+				953BCA602448F1E300899472 /* ScoreKey.swift */,
+				953BCA5E2448ED8C00899472 /* Scores.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,8 +256,12 @@
 				9537023D24475B6200A7314F /* MainView.swift in Sources */,
 				959164A92447BDCD00A218DF /* CardState.swift in Sources */,
 				959164B02447BE7700A218DF /* Styles.swift in Sources */,
+				953BCA612448F1E300899472 /* ScoreKey.swift in Sources */,
 				959164A72447BDA600A218DF /* Card.swift in Sources */,
+				953BCA5D2448ECD400899472 /* Score.swift in Sources */,
 				959164AB2447BDDA00A218DF /* CartPart.swift in Sources */,
+				953BCA632448F56000899472 /* HighScoresView.swift in Sources */,
+				953BCA5F2448ED8C00899472 /* Scores.swift in Sources */,
 				959164AD2447BE1B00A218DF /* SettingsButton.swift in Sources */,
 				9537023B24475B6200A7314F /* AppDelegate.swift in Sources */,
 				959164B22447BF4500A218DF /* SettingsView.swift in Sources */,

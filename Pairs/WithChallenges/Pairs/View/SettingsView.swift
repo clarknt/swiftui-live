@@ -27,8 +27,8 @@ struct SettingsView: View {
                 }
             }
 
-            Picker(selection: $deck.deck, label: Text("Theme")) {
-                ForEach(deck.decks, id: \.self) { pair in
+            Picker(selection: $deck.theme, label: Text("Theme")) {
+                ForEach(deck.themes, id: \.self) { pair in
                     Text("\(pair)").tag(pair)
                 }
             }

@@ -13,8 +13,8 @@ class Deck: ObservableObject {
     var cardParts = [CardPart]()
 
     // challenge 2
-    let decks = ["capitals", "math", "cars"]
-    var deck = "capitals" {
+    let themes = ["capitals", "math", "cars"]
+    var theme = "capitals" {
         didSet {
             reloadData()
         }
@@ -51,7 +51,7 @@ class Deck: ObservableObject {
 
     // challenge 1 & 2
     func reloadData() {
-        allCards = Bundle.main.decode("\(deck).json")
+        allCards = Bundle.main.decode("\(theme).json")
 
         // challenge 1 - pick random cards
         let selectedCards = allCards.shuffled().prefix(cardRows * cardColumns / 2)

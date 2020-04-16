@@ -21,6 +21,7 @@ enum GameState {
 struct MainView: View {
     // challenge 1 & 2
     @EnvironmentObject var deck: Deck
+    @EnvironmentObject var scores: Scores
 
     // renamed from GameState for challenge 3
     @State private var gameCardState = GameCardState.start
@@ -35,6 +36,9 @@ struct MainView: View {
 
     // challenge 3
     @State private var gameState = GameState.initial
+
+    // challenge 4
+    @State private var latestScore = Score(score: 0, date: Date())
 
     // challenge 1 & 2
     private var cardWidth: CGFloat {
@@ -82,8 +86,16 @@ struct MainView: View {
                     if gameState == .finished {
                         VStack {
                             Text("Score: \(timeRemaining)")
-                                .padding()
-                            
+                                .padding(.bottom)
+
+                            // challenge 4
+                            Text("High scores")
+                                .font(.body)
+                            HighScoresView(scores: self.scores.get(), currentScore: latestScore)
+                                .frame(width: 200)
+                                .mask(RoundedRectangle(cornerRadius: 10))
+                                .padding(.bottom)
+
                             Button("Restart Game") {
                                 self.restartGame()
                             }
@@ -165,6 +177,9 @@ struct MainView: View {
         // challenge 3
         if deck.cardParts.filter({ $0.state == .unflipped }).isEmpty {
             gameState = .finished
+            // challenge 4
+            latestScore = Score(score: timeRemaining, date: Date())
+            scores.add(score: latestScore)
         }
     }
 

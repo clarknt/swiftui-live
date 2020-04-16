@@ -20,11 +20,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // challenge 1 & 2
         let deck = Deck()
+        // challenge 4
+        let scores = Scores(deck: deck)
 
         let contentView = MainView()
             .edgesIgnoringSafeArea(.all)
             // challenge 1 & 2
             .environmentObject(deck)
+            // challenge 4
+            .environmentObject(scores)
 
         // Create the window and set the content view. 
         window = NSWindow(
