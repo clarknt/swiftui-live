@@ -8,16 +8,22 @@
 
 import SwiftUI
 
-
-enum GameState {
+// renamed from GameState for challenge 3
+enum GameCardState {
     case start, firstFlipped
+}
+
+// challenge 3
+enum GameState {
+    case initial, ongoing, finished, settings
 }
 
 struct MainView: View {
     // challenge 1 & 2
     @EnvironmentObject var deck: Deck
 
-    @State private var state = GameState.start
+    // renamed from GameState for challenge 3
+    @State private var gameCardState = GameCardState.start
     @State private var firstIndex: Int?
     @State private var secondIndex: Int?
 
@@ -26,6 +32,9 @@ struct MainView: View {
 
     // challenge 1 & 2
     @State private var showSettings = false
+
+    // challenge 3
+    @State private var gameState = GameState.initial
 
     // challenge 1 & 2
     private var cardWidth: CGFloat {
@@ -55,19 +64,46 @@ struct MainView: View {
             VStack {
                 Image(decorative: "pairs")
 
-                // challenge 1
-                GridStack(rows: deck.cardRows, columns: deck.cardColumns, content: card)
-                    .layoutPriority(1)
+                ZStack {
+                    // challenge 1
+                    GridStack(rows: deck.cardRows, columns: deck.cardColumns, content: card)
+                        .layoutPriority(1)
+                        .blur(radius: gameState == .ongoing ? 0 : 3)
+
+                    // challenge 3
+                    if gameState == .initial {
+                        Button("Start Game") {
+                            self.gameState = .ongoing
+                        }
+                        .buttonStyle(PairsButtonStyle())
+                    }
+
+                    // challenge 3
+                    if gameState == .finished {
+                        VStack {
+                            Text("Score: \(timeRemaining)")
+                                .padding()
+                            
+                            Button("Restart Game") {
+                                self.restartGame()
+                            }
+                            .buttonStyle(PairsButtonStyle())
+                        }
+                        .modifier(PairsTextStyle())
+                    }
+                }
 
                 Text("Time: \(timeRemaining)")
                     .font(.largeTitle)
             }
             .padding()
 
-            // challenge 1 & 2
+            // challenge 1, 2 & 3
             SettingsButton {
+                self.gameState = .settings
                 self.showSettings = true
             }
+            .padding(.bottom, 10)
         }
         .onReceive(timer, perform: updateTimer)
         // challenge 1 & 2
@@ -92,15 +128,18 @@ struct MainView: View {
     }
 
     func flip(_ index: Int) {
+        // challenge 3
+        guard gameState == .ongoing else { return }
+
         guard deck.cardParts[index].state == .unflipped else { return }
         guard secondIndex == nil else { return }
 
-        switch state {
+        switch gameCardState {
         case .start:
             withAnimation {
                 self.firstIndex = index
                 self.deck.set(index, to: .flipped)
-                self.state = .firstFlipped
+                self.gameCardState = .firstFlipped
             }
         case .firstFlipped:
             withAnimation {
@@ -122,6 +161,11 @@ struct MainView: View {
         }
 
         reset()
+
+        // challenge 3
+        if deck.cardParts.filter({ $0.state == .unflipped }).isEmpty {
+            gameState = .finished
+        }
     }
 
     func noMatch() {
@@ -140,7 +184,7 @@ struct MainView: View {
     func reset() {
         firstIndex = nil
         secondIndex = nil
-        state = .start
+        gameCardState = .start
     }
 
     func checkMatches() {
@@ -157,8 +201,8 @@ struct MainView: View {
     }
 
     func updateTimer(_ currentTime: Date) {
-        // challenge 1 & 2
-        guard showSettings == false else { return }
+        // challenge 1, 2 & 3
+        guard gameState == .ongoing else { return }
 
         let unmatched = self.deck.cardParts.filter { $0.state != .matched }
         guard unmatched.count > 0 else { return }
@@ -166,10 +210,16 @@ struct MainView: View {
         if self.timeRemaining > 0 {
             self.timeRemaining -= 1
         }
+        // challenge 3
+        else {
+            gameState = .finished
+        }
     }
 
-    // challenge 1 & 2
+    // challenge 1, 2 & 3
     func restartGame() {
+        deck.reloadData()
+        gameState = .ongoing
         timeRemaining = 100
     }
 }
