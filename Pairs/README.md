@@ -6,7 +6,7 @@ https://www.youtube.com/watch?v=SroTB1buuD0
 
 1. Add difficulty levels
 2. Add more themes
-3. Add a begining and end screen *- Not available*
+3. Add a begining and end screen
 4. List high scores *- Not available*
 
 # Screenshots
